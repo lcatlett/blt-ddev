@@ -1,0 +1,20 @@
+version: '3.6'
+services:
+  chrome:
+    hostname: chrome
+    container_name: ddev-${DDEV_SITENAME}-chrome
+    image: yukinying/chrome-headless-browser:64.0.3282.24
+    labels:
+    # These labels ensure this service is discoverable by ddev
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+      com.ddev.app-url: $DDEV_URL
+  # This links the Chromedriver service to the web service defined
+  # in the main docker-compose.yml, allowing applications running
+  # in the web service to access the driver at `chrome`.
+    shm_size: 512M
+    cap_add:
+      - SYS_ADMIN
+  web:
+    links:
+      - chrome:$DDEV_HOSTNAME
