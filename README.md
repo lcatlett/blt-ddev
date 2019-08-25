@@ -11,11 +11,10 @@ This plugin is **community-created** and **community-supported**. Acquia does no
 To create a new BLT project with ddev integration for local development, run the following commands, replacing `mysite` with your desired BLT project name.
 
 ```
-composer create-project --no-interaction acquia/blt-project mysite`
+composer create-project --no-interaction acquia/blt-project mysite
 cd mysite
 composer require lcatlett/blt-ddev
-blt recipes:ddev
-ddev start
+blt recipes:ddev --no-interactio
 ddev blt setup
 ```
 
