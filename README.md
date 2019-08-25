@@ -29,7 +29,7 @@ The plugin adds a custom ddev command in the web container which makes the `ddev
 
 ## Behat configuration
 
-- BLT makes some assumptions about the local development environment which informs behat testing configuration. This plugin extends the default `blt tests:behat:run` command to run behat tests in a container as a dedicated service.
+- BLT makes some assumptions about the local development environment which informs behat testing configuration. This plugin extends the default `blt behat` command to run behat tests in a container as a dedicated service via the `ddev blt behat` command. 
 
 
 
