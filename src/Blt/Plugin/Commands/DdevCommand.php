@@ -36,8 +36,19 @@ class DdevCommand extends BltTasks {
     if (!$result->wasSuccessful()) {
       throw new BltException("Could not copy example.local.blt.yml template to blt folder.");
     }
+    $result = $this->taskFilesystemStack()
+    ->copy($this->getConfigValue('blt.config-files.example-local'), $this->getConfigValue('blt.config-files.local'), true)
+    ->stopOnFail()
+    ->setVerbosityThreshold(VerbosityThresholdInterface::VERBOSITY_VERBOSE)
+    ->run();
+
+  if (!$result->wasSuccessful()) {
+    $filepath = $this->getInspector()->getFs()->makePathRelative($this->getConfigValue('blt.config-files.local'), $this->getConfigValue('repo.root'));
+    throw new BltException("Unable to create $filepath.");
+  }
 
     $this->ddevConfig();
+    $this->ddevConfigInit();
 
     $this->say("<info>ddev project and BLT config were successfully initialized.</info>");
 
