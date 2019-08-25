@@ -14,7 +14,7 @@ class DdevCommand extends BltTasks {
   /**
    * Initializes default ddev configs for this project.
    *
-   * @command recipes:ddev:project:init
+   * @command recipes:ddev
    * @throws \Acquia\Blt\Robo\Exceptions\BltException
    */
   public function ddevProjectInit() {
@@ -47,12 +47,12 @@ class DdevCommand extends BltTasks {
     throw new BltException("Unable to create $filepath.");
   }
 
+    $this->ddevInit();
     $this->ddevConfig();
-    $this->ddevConfigInit();
 
     $this->say("<info>ddev project and BLT config were successfully initialized.</info>");
 
-    $execute_init = $this->confirm('Would you like to run ddev start to provision your ddev stack and do site setup?', true);
+    $execute_init = $this->confirm('Would you like to run ddev start to provision your ddev stack?', true);
     if ($execute_init) {
       $this->taskExec('ddev start')->run();
     }
@@ -60,12 +60,12 @@ class DdevCommand extends BltTasks {
 
 
   /**
-   * Configures ddev for blt
+   * Initializes ddev configuration for blt project.
    *
-   * @command recipes:ddev:config
+   * @command recipes:ddev:init
    *
    */
-  public function ddevConfig() {
+  public function ddevInit() {
     $this->say('Generating ddev project config');
     $result = $this->taskExecStack()
       ->exec("ddev config --docroot docroot --project-type drupal8  --project-name \"{$this->getConfigValue('project.machine_name')}\"")
@@ -82,10 +82,10 @@ class DdevCommand extends BltTasks {
   /**
    * Initializes BLT configs to work with ddev.
    *
-   * @command recipes:ddev:config:init
+   * @command recipes:ddev:config
    * @throws \Acquia\Blt\Robo\Exceptions\BltException
    */
-  public function ddevConfigInit() {
+  public function ddevConfig() {
     // Initialize local settings.
     try {
       $result = $this->taskFilesystemStack()
@@ -100,14 +100,14 @@ class DdevCommand extends BltTasks {
         throw new BltException("Could not remove old local settings. Please check your permissions.");
       }
 
-      // Re-init settings after we removed old settings.
+      // Re-init settings after old settings are removed..
       $this->invokeCommand('blt:init:settings');
     }
     catch (BltException $e) {
       throw new BltException("Could not init local BLT or settings files.");
     }
 
-    // Use containerized Chrome for behat testsif available.
+    // Use containerized Chrome for behat tests if available.
     if (file_exists($this->getConfigValue('repo.root') . '/tests/behat/example.local.yml')) {
       $result = $this->taskReplaceInFile($this->getConfigValue('repo.root') . '/tests/behat/example.local.yml')
         ->from('api_url: "http://localhost:9222"')
@@ -126,7 +126,7 @@ class DdevCommand extends BltTasks {
           throw new BltException("Could not remove Behat local settings. Please check your permissions.");
         }
 
-        // Re-init settings after we removed old settings.
+        // Re-init settings after old settings are removed..
         $this->invokeCommand('tests:behat:init:config');
       }
     }
