@@ -37,9 +37,13 @@ Running `blt recipes:ddev` will initialize a .ddev folder as well as BLT configu
 The plugin adds a custom ddev command in the web container which makes the `ddev blt` command available. **All blt commands should be prefixed with `ddev` to ensure it is excuted within the docker container**, for example:
 
 `ddev blt setup`
+
 `ddev blt tests`
+
 `ddev blt sync`
+
 `ddev blt sync --environment=ci`
+
 
 # BLT Enhancements
 
