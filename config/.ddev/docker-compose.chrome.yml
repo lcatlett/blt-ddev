@@ -8,7 +8,6 @@ services:
     # These labels ensure this service is discoverable by ddev
       com.ddev.site-name: ${DDEV_SITENAME}
       com.ddev.approot: $DDEV_APPROOT
-      com.ddev.app-url: $DDEV_URL
   # This links the Chromedriver service to the web service defined
   # in the main docker-compose.yml, allowing applications running
   # in the web service to access the driver at `chrome`.
