@@ -11,7 +11,10 @@
             "role": "Maintainer"
         }
     ],
-  "require": {},
+  "require": {
+    "acquia/blt": "^12",
+    "acquia/blt-behat": "^1.1"
+  },
   "autoload": {
     "psr-4": {
       "Lcatlett\\BltDdev\\": "./src/"
