@@ -3,7 +3,7 @@ services:
   chrome:
     hostname: chrome
     container_name: ddev-${DDEV_SITENAME}-chrome
-    image: yukinying/chrome-headless-browser:64.0.3282.24
+    image: mikejoconnor/headless-chromium
     labels:
     # These labels ensure this service is discoverable by ddev
       com.ddev.site-name: ${DDEV_SITENAME}
