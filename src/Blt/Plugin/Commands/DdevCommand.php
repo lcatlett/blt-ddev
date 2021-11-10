@@ -68,7 +68,7 @@ class DdevCommand extends BltTasks {
   public function ddevInit() {
     $this->say('Generating ddev project config');
     $result = $this->taskExecStack()
-      ->exec("ddev config --docroot docroot --project-type drupal8  --project-name \"{$this->getConfigValue('project.machine_name')}\"")
+      ->exec("ddev config --docroot docroot --project-type drupal9  --project-name \"{$this->getConfigValue('project.machine_name')}\"")
       ->run();
 
     if (!$result->wasSuccessful()) {
@@ -127,7 +127,7 @@ class DdevCommand extends BltTasks {
         }
 
         // Re-init settings after old settings are removed..
-        $this->invokeCommand('tests:behat:init:config');
+        $this->invokeCommand('recipes:behat:init');
       }
     }
   }
