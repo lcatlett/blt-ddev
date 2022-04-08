@@ -2,7 +2,7 @@
 
 namespace Lcatlett\BltDdev\Blt\Plugin\Commands;
 
-use Acquia\Blt\Robo\Commands\Tests\BehatCommand;
+use Acquia\BltBehat\Blt\Plugin\Commands\BehatCommand;
 
 class BehatDdevCommand extends BehatCommand {
 
