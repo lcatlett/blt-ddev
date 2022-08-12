@@ -21,7 +21,7 @@ ddev blt setup
 
 ## Installation and usage
 
-To use this plugin on your existing BLT 12 project, you must be using ddev [v1.10.0](https://github.com/drud/ddev/releases/tag/v1.10.0) or newer. 
+To use this plugin on your existing BLT 12 project, you must be using ddev [v1.10.0](https://github.com/drud/ddev/releases/tag/v1.10.0) or newer.
 
 You can check your version of ddev with `ddev version`.
 
@@ -50,7 +50,4 @@ The plugin adds a custom ddev command in the web container which makes the `ddev
 
 ## Behat configuration
 
-BLT makes some assumptions about the local development environment which informs behat testing configuration. This plugin extends the default `blt behat` command to run behat tests in a container as a dedicated service via the `ddev blt behat` command. 
-
-
-
+BLT makes some assumptions about the local development environment which informs behat testing configuration. This plugin extends the default `blt behat` command to run behat tests in a container as a dedicated service via the `ddev blt behat` command.
