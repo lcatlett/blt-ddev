@@ -14,14 +14,6 @@ To create a new BLT project with ddev integration for local development, run the
 composer create-project --no-interaction --no-install drupal/recommended-project mysite
 cd mysite
 sudo sed -i '' -e "s|web/|docroot/|g" composer.json
-composer config minimum-stability dev
-composer config prefer-stable true
-composer config platform.php 7.4
-composer require acquia/blt:^12 --no-update --sort-packages
-composer update --with-all-dependencies
-composer require --dev acquia/blt-phpcs acquia/blt-drupal-check acquia/blt-behat
-composer require --dev acquia/blt-drupal-test --no-update
-composer update --with-all-dependencies
 composer require --dev lcatlett/blt-ddev
 blt recipes:ddev --no-interaction
 ddev blt setup
