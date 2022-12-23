@@ -2,7 +2,11 @@
 
 ## Description: run blt in the web container
 ## Usage: blt [flags] [args]
-## Example: "ddev blt setup" or "ddev blt tests"
-## `ddev blt source:build`
+## Example: "ddev blt setup" or "ddev blt validate" or "ddev blt tests" or "ddev blt source:build"
+
+if ! command -v blt >/dev/null; then
+  echo "blt is not available. You may need to 'composer require acquia/blt'"
+  exit 1
+fi
 
 /var/www/html/vendor/acquia/blt/bin/blt $@

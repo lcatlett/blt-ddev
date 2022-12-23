@@ -13,7 +13,6 @@
     ],
   "require": {
     "acquia/blt": "^12 || ^13",
-    "acquia/blt-behat": "^1.1"
   },
   "autoload": {
     "psr-4": {
