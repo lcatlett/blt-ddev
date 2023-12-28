@@ -11,22 +11,23 @@ This plugin is **community-created** and **community-supported**. Acquia does no
 To create a new BLT project with ddev integration for local development, run the following commands, replacing `mysite` with your desired BLT project name:
 
 ```
-composer create-project --no-interaction acquia/blt-project mysite
+composer create-project --no-interaction --no-install drupal/recommended-project mysite
 cd mysite
-composer require lcatlett/blt-ddev
+sudo sed -i '' -e "s|web/|docroot/|g" composer.json
+composer require --dev lcatlett/blt-ddev
 blt recipes:ddev --no-interaction
 ddev blt setup
 ```
 
 ## Installation and usage
 
-To use this plugin on your existing BLT 10 project, you must be using ddev [v1.10.0](https://github.com/drud/ddev/releases/tag/v1.10.0) or newer. 
+To use this plugin on your existing BLT 12 project, you must be using ddev [v1.10.0](https://github.com/drud/ddev/releases/tag/v1.10.0) or newer.
 
 You can check your version of ddev with `ddev version`.
 
 In your project, require the plugin with Composer:
 
-`composer require lcatlett/blt-ddev`
+`composer require --dev lcatlett/blt-ddev`
 
 Initialize the ddev integration by calling `recipes:ddev`, which is a custom BLT command provided by this plugin:
 
@@ -34,7 +35,7 @@ Initialize the ddev integration by calling `recipes:ddev`, which is a custom BLT
 
 Running `blt recipes:ddev` will initialize a .ddev folder as well as BLT configuration in the /blt directory of your project.
 
-The plugin adds a custom ddev command in the web container which makes the `ddev blt` command available. **All blt commands should be prefixed with `ddev` to ensure it is excuted within the docker container**, for example:
+The plugin adds a custom ddev command in the web container which makes the `ddev blt` command available. **All blt commands should be prefixed with `ddev` to ensure it is executed within the docker container**, for example:
 
 `ddev blt setup`
 
@@ -49,7 +50,4 @@ The plugin adds a custom ddev command in the web container which makes the `ddev
 
 ## Behat configuration
 
-BLT makes some assumptions about the local development environment which informs behat testing configuration. This plugin extends the default `blt behat` command to run behat tests in a container as a dedicated service via the `ddev blt behat` command. 
-
-
-
+BLT makes some assumptions about the local development environment which informs behat testing configuration. This plugin extends the default `blt behat` command to run behat tests in a container as a dedicated service via the `ddev blt behat` command.

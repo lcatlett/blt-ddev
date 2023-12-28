@@ -2,9 +2,9 @@
 
 namespace Lcatlett\BltDdev\Blt\Plugin\Commands;
 
-use Acquia\BltBehat\Blt\Plugin\Commands\BehatCommand;
+use Acquia\BltBehat\Blt\Plugin\Commands\BehatTestCommand;
 
-class BehatDdevCommand extends BehatCommand {
+class BehatDdevCommand extends BehatTestCommand {
 
   /**
    * Executes all behat tests.

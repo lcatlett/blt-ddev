@@ -12,11 +12,9 @@
         }
     ],
   "require": {
-    "acquia/blt-behat": "dev-master"
+    "acquia/blt": "^12 || ^13",
+    "acquia/blt-behat": "^1.1"
   },
-   "conflict": {
-     "acquia/blt": "<=12.5.1"
-   },
   "autoload": {
     "psr-4": {
       "Lcatlett\\BltDdev\\": "./src/"
