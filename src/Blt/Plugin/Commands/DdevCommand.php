@@ -68,7 +68,7 @@ class DdevCommand extends BltTasks {
   public function ddevInit() {
     $this->say('Generating ddev project config');
     $result = $this->taskExecStack()
-      ->exec("ddev config --docroot docroot --project-type drupal9  --project-name \"{$this->getConfigValue('project.machine_name')}\"")
+      ->exec("ddev config --docroot docroot --project-type drupal10  --project-name \"{$this->getConfigValue('project.machine_name')}\"")
       ->run();
 
     if (!$result->wasSuccessful()) {
@@ -76,7 +76,7 @@ class DdevCommand extends BltTasks {
     }
 
     return $result;
-  
+
   }
 
   /**
